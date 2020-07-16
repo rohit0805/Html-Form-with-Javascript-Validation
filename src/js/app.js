@@ -95,13 +95,19 @@ var AlertController=(function(DOMCtrl){
     };
     var ChangeType=function(e){
         //console.log(e.target.parentNode.childNodes[3].type);
-        var temp=e.target.parentNode.childNodes[3];
-        if(temp.type=="password"){
-            temp.type="text";
-        }
-        else{
-            temp.type="password";
-        }
+        var temp=e.target.parentNode.childNodes;
+        //console.log(e.target.parentNode.childNodes[3].nodeName);
+        temp.forEach((curr)=>{
+            if(curr.nodeName=="INPUT"){
+                if(curr.type=="password"){
+                    curr.type="text";
+                }
+                else{
+                    curr.type="password";
+                }
+            }
+        });
+        
     };
     return{
         //Name Validation
