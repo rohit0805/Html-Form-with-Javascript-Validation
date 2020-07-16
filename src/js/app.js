@@ -19,6 +19,8 @@ var DOMController=(function(){
         conf_pass_alert_2:document.querySelector('.conf_pass_alert_2'),
         form_wrap:document.querySelector('.form_wrap'),
         validate:document.querySelectorAll('.validate'),
+        locker1:document.querySelector('.locker1'),
+        locker2:document.querySelector('.locker2'),
     };
     return {
         getSelector:function(){
@@ -90,6 +92,16 @@ var AlertController=(function(DOMCtrl){
                 break;
             }
         };
+    };
+    var ChangeType=function(e){
+        //console.log(e.target.parentNode.childNodes[3].type);
+        var temp=e.target.parentNode.childNodes[3];
+        if(temp.type=="password"){
+            temp.type="text";
+        }
+        else{
+            temp.type="password";
+        }
     };
     return{
         //Name Validation
@@ -252,6 +264,18 @@ var AlertController=(function(DOMCtrl){
                     }
                 }
             });
+        },
+        Locker:function(){
+            selector.locker1.addEventListener('click',function(e){
+                selector.locker1.classList.toggle('fa-unlock');
+                selector.locker1.classList.toggle('fa-lock');
+                ChangeType(e);
+            });
+            selector.locker2.addEventListener('click',function(e){
+                selector.locker2.classList.toggle('fa-unlock');
+                selector.locker2.classList.toggle('fa-lock');
+                ChangeType(e);
+            });
         }
     };
 })(DOMController);
@@ -260,14 +284,17 @@ var Controller=(function(PlaceCtrl,AlertCtrl){
     return {
         init:function(){
             PlaceController.getDOMEvent();
+            AlertCtrl.Locker();
             AlertCtrl.NameValidation();
             AlertCtrl.EmailValidation();
             AlertCtrl.PassValidation();
             AlertCtrl.ConfirmPassValidation();
             AlertCtrl.FormValidation();
+            
         }
     };
 })(PlaceController,AlertController);
 
 Controller.init();
+
 
