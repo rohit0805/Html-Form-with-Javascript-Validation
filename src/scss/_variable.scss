@@ -1,0 +1,49 @@
+$heading-color:#ccc;
+$fb-color:#3b5998;
+$google-color:#db3236;
+$twitter-color:#00acee;
+$seperate-color:#aaa;
+$border-bottom-color:#ddd;
+$text-color:#eee;
+$uplift-color:#999;
+
+$alert-color:rgb(250,150,19);
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Roboto',sans-serif;
+    overflow-x: hidden;
+}
+
+
+@keyframes Vibrate{
+    from{
+        transform:translateX(5px) translateY(-50%);
+    }
+    to{
+        transform:translateX(-5px) translateY(-50%);
+    }
+}
+
+@keyframes BoxVibrate{
+    from{
+        transform: translateX(5px);
+    }
+    to{
+        transform:translateX(-5px);
+    }
+}
+
+
+.uplift{
+    top:0!important;
+    transform: translate(0);
+    left:10px!important;
+    font-size:12px!important;
+    color:$uplift-color!important;
+}
